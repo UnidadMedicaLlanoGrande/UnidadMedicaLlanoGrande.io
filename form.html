@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Citas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fondo negro */
+            color: #fff; /* Texto blanco */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1a1a1a; /* Fondo gris oscuro para el contenedor */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid transparent; /* Borde transparente por defecto */
+            border-radius: 4px;
+            transition: border-color 0.3s; /* Transición suave para el borde */
+        }
+        .form-group input:focus,
+        .form-group input:hover {
+            border: 1px solid #fff; /* Borde blanco al enfocar o pasar el cursor */
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s; /* Transición suave para el botón */
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Agendar Consulta</h2>
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                <input type="date" id="fechaNacimiento" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" required>
+            </div>
+            <div class="form-group">
+                <label for="historialMedico">Historial Médico</label>
+                <input type="text" id="historialMedico" required>
+            </div>
+            <button type="submit" class="btn">Agendar Cita</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Simulación de verificación de horas disponibles
+            const availableHours = ["09:00", "10:00", "11:00", "14:00", "15:00"];
+            const selectedHour = availableHours[Math.floor(Math.random() * availableHours.length)];
+
+            // Aquí puedes agregar la lógica para insertar en la base de datos
+
+            alert(`Cita agendada para ${selectedHour}.`);
+            window.location.href = 'index.html'; // Redireccionar a la página principal
+        });
+    </script>
+
+</body>
+</html>

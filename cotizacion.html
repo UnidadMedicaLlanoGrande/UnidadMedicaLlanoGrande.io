@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotización de Medicamentos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Fondo negro */
+            color: #fff; /* Texto blanco */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1a1a1a; /* Fondo gris oscuro para el contenedor */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid transparent; /* Borde transparente por defecto */
+            border-radius: 4px;
+            transition: border-color 0.3s; /* Transición suave para el borde */
+        }
+        .form-group input:focus,
+        .form-group input:hover {
+            border: 1px solid #fff; /* Borde blanco al enfocar o pasar el cursor */
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cotización de Medicamentos</h2>
+        <form id="quotationForm">
+            <div class="form-group">
+                <label for="medicamento">Nombre del Medicamento</label>
+                <input type="text" id="medicamento" required>
+            </div>
+            <button type="submit" class="btn">Calcular Precio</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('quotationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const medicamento = document.getElementById('medicamento').value;
+            const costoBase = 100; // Costo base del medicamento
+            const margenGanancia = 0.30; // 30% de margen de ganancia
+            const iva = 0.16; // 16% de IVA
+
+            // Calculo del precio
+            const precioConMargen = costoBase + (costoBase * margenGanancia);
+            const precioFinal = precioConMargen + (precioConMargen * iva);
+
+            document.getElementById('result').innerText = `El precio aproximado de ${medicamento} es: $${precioFinal.toFixed(2)}`;
+        });
+    </script>
+
+</body>
+</html>
